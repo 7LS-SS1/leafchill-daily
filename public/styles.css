@@ -1,0 +1,1691 @@
+:root {
+  --bg: #f7f7f2;
+  --panel: #ffffff;
+  --ink: #18201b;
+  --muted: #657067;
+  --line: #dde2dc;
+  --brand: #176b5c;
+  --brand-dark: #0d4f43;
+  --accent: #d98e32;
+  --danger: #b42318;
+  --ok: #16784a;
+  --shadow: 0 16px 40px rgba(24, 32, 27, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  line-height: 1.45;
+}
+
+.env-banner {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 7px 12px;
+  background: #f59e0b;
+  color: #231502;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 650;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(380px, 460px);
+  gap: clamp(24px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(24px, 6vw, 72px);
+  background:
+    linear-gradient(120deg, rgba(6, 23, 19, 0.88), rgba(10, 38, 32, 0.7) 48%, rgba(6, 23, 19, 0.92)),
+    url("https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1600&q=80") center/cover;
+  overflow: hidden;
+  position: relative;
+}
+
+.login-page::before {
+  content: "";
+  position: absolute;
+  inset: auto -18% -22% 42%;
+  height: 48%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.24), transparent 58%);
+  pointer-events: none;
+}
+
+.login-hero {
+  position: relative;
+  color: #fff;
+  max-width: 680px;
+}
+
+.login-kicker,
+.login-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.login-kicker {
+  padding: 8px 12px;
+  margin-bottom: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+}
+
+.login-hero h1 {
+  margin: 0;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 0.98;
+  max-width: 780px;
+}
+
+.login-hero p {
+  max-width: 560px;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 18px;
+}
+
+.login-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 560px;
+  margin-top: 28px;
+}
+
+.login-metrics div {
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.login-metrics strong,
+.login-metrics span {
+  display: block;
+}
+
+.login-metrics strong {
+  font-size: 18px;
+}
+
+.login-metrics span {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+}
+
+.login-box {
+  position: relative;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+}
+
+.login-card-head {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 18px;
+}
+
+.login-badge {
+  padding: 6px 9px;
+  background: #e7f2ee;
+  color: var(--brand);
+  font-size: 12px;
+}
+
+.login-box h2 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.login-box p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.login-submit {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 4px;
+}
+
+.demo-accounts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.demo-accounts button {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.demo-accounts button:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #102721;
+  color: #fff;
+  padding: 22px 16px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.mobile-nav-head {
+  display: block;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.mobile-footer-nav {
+  display: none;
+}
+
+.nav {
+  display: grid;
+  gap: 7px;
+}
+
+.nav button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.82);
+  padding: 11px 12px;
+}
+
+.nav button.active,
+.nav button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.content {
+  padding: 24px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.topbar span {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.card,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.card {
+  padding: 18px;
+}
+
+.card strong {
+  display: block;
+  font-size: 30px;
+}
+
+.card span {
+  color: var(--muted);
+}
+
+.panel {
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.panel h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.form-grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 11px;
+  background: #fff;
+  color: var(--ink);
+}
+
+textarea {
+  min-height: 74px;
+  resize: vertical;
+}
+
+.btn {
+  background: var(--brand);
+  color: #fff;
+  padding: 10px 14px;
+}
+
+.btn:hover {
+  background: var(--brand-dark);
+}
+
+.btn.secondary {
+  background: #e9eeeb;
+  color: var(--ink);
+}
+
+.btn.warn {
+  background: var(--danger);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 780px;
+}
+
+th,
+td {
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  padding: 11px 10px;
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-size: 13px;
+  background: #fbfcfa;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #e8f4ee;
+  color: var(--ok);
+}
+
+.pill.warn {
+  background: #fff4e5;
+  color: #9a5a09;
+}
+
+.pill.danger {
+  background: #fcebea;
+  color: var(--danger);
+}
+
+.notice {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  background: #102721;
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  max-width: min(420px, calc(100vw - 36px));
+  z-index: 5;
+}
+
+.empty {
+  padding: 18px;
+  color: var(--muted);
+}
+
+.attendance-page {
+  margin-bottom: 14px;
+}
+
+.attendance-top {
+  display: grid;
+  grid-template-columns: minmax(420px, 1fr) minmax(440px, 0.85fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.cf-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.94)),
+    radial-gradient(circle at top right, rgba(217, 142, 50, 0.14), transparent 32%);
+}
+
+.clock-panel {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 0;
+}
+
+.clock-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.clock-header > div {
+  display: grid;
+  gap: 4px;
+}
+
+.eyebrow,
+.clock-header small,
+.clock-status,
+.attendance-toolbar span {
+  color: var(--muted);
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.clock-header strong {
+  font-size: clamp(52px, 7vw, 92px);
+  line-height: 1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.shift-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.work-live {
+  display: grid;
+  gap: 3px;
+  min-height: 78px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfa;
+}
+
+.work-live span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.work-live strong {
+  font-size: 24px;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.muted-card strong {
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.status-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.status-dot::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #9aa39d;
+}
+
+.status-dot.active {
+  color: var(--ok);
+}
+
+.status-dot.active::before {
+  background: var(--ok);
+  box-shadow: 0 0 0 4px rgba(22, 120, 74, 0.12);
+}
+
+.clock-btn {
+  min-height: 50px;
+  flex: 1 1 150px;
+}
+
+.clock-btn.out {
+  background: var(--accent);
+}
+
+.clock-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.calendar-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.calendar-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.date-badge {
+  width: 66px;
+  min-width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  background: #f1f2f1;
+  border-radius: 8px;
+}
+
+.date-badge span {
+  font-weight: 800;
+}
+
+.date-badge strong {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.calendar-head h2,
+.calendar-head p {
+  margin: 0;
+}
+
+.calendar-head p {
+  color: var(--muted);
+}
+
+.calendar-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 4px;
+  flex-wrap: wrap;
+}
+
+.calendar-tools select {
+  width: auto;
+  min-width: 74px;
+}
+
+.calendar-tools .btn {
+  margin-left: auto;
+}
+
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: var(--ink);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  padding: 0 16px 14px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink);
+  padding: 8px 0;
+}
+
+.calendar-day {
+  aspect-ratio: 1.32 / 1;
+  min-height: 42px;
+  background: transparent;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.calendar-day span {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.calendar-day small {
+  color: var(--brand);
+  font-size: 10px;
+  line-height: 1;
+}
+
+.attendance-list {
+  padding: 14px;
+}
+
+.attendance-toolbar {
+  margin-bottom: 10px;
+}
+
+.attendance-toolbar h2 {
+  margin-bottom: 2px;
+}
+
+.attendance-table {
+  min-width: 860px;
+}
+
+.attendance-table th,
+.attendance-table td {
+  padding: 9px 10px;
+}
+
+.time-range {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: #26312a;
+}
+
+.calendar-day.muted {
+  color: #a7aaa9;
+}
+
+.calendar-day.selected {
+  border-color: #0672d8;
+}
+
+.calendar-day.has-record:not(.selected) {
+  background: #edf7f3;
+}
+
+@media (max-width: 960px) {
+  .login-page {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 24px;
+    align-content: center;
+  }
+
+  .login-hero {
+    max-width: 620px;
+  }
+
+  .login-hero h1 {
+    font-size: clamp(34px, 8vw, 56px);
+  }
+
+  .login-box {
+    max-width: 520px;
+  }
+
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+  }
+
+  .nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats,
+  .form-grid,
+  .form-grid.two {
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .attendance-top,
+  .clock-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .clock-header {
+    align-items: flex-start;
+  }
+
+  .shift-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-tools .btn {
+    margin-left: 0;
+  }
+
+  .calendar-grid {
+    gap: 4px;
+    padding: 0 12px 14px;
+  }
+
+  .calendar-day {
+    min-height: 44px;
+  }
+
+  .calendar-day span {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 640px) {
+  .login-page {
+    min-height: 100svh;
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .login-kicker {
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .login-hero h1 {
+    font-size: clamp(30px, 10vw, 44px);
+  }
+
+  .login-hero p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .login-metrics {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    margin-top: 14px;
+  }
+
+  .login-metrics div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 11px;
+  }
+
+  .login-metrics strong {
+    font-size: 14px;
+  }
+
+  .login-metrics span {
+    font-size: 12px;
+  }
+
+  .login-box {
+    padding: 18px;
+  }
+
+  .login-box h2 {
+    font-size: 25px;
+  }
+
+  .login-card-head {
+    margin-bottom: 14px;
+  }
+
+  .demo-accounts {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  body {
+    background: #f5f6f3;
+  }
+
+  .sidebar {
+    padding: 10px 12px;
+  }
+
+  .mobile-nav-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .brand {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 34px;
+    padding: 7px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .menu-toggle::after {
+    content: "▾";
+    font-size: 11px;
+  }
+
+  .menu-toggle[aria-expanded="true"]::after {
+    content: "▴";
+  }
+
+  .nav {
+    display: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    margin-top: 10px;
+  }
+
+  .nav.open {
+    display: grid;
+  }
+
+  .nav button {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+    padding: 9px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .content {
+    padding: 12px 12px 76px;
+  }
+
+  .mobile-footer-nav {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 15;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 6px;
+    padding: 7px;
+    border: 1px solid rgba(16, 39, 33, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 34px rgba(16, 39, 33, 0.18);
+    backdrop-filter: blur(10px);
+  }
+
+  .mobile-footer-nav button {
+    min-height: 40px;
+    padding: 6px 4px;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 850;
+    text-align: center;
+  }
+
+  .mobile-footer-nav button.active {
+    background: #102721;
+    color: #fff;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .topbar h1 {
+    font-size: 22px;
+  }
+
+  .topbar .btn {
+    padding: 9px 10px;
+    white-space: nowrap;
+  }
+
+  .panel,
+  .calendar-panel {
+    border-radius: 8px;
+    box-shadow: none;
+  }
+
+  .clock-panel {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .clock-header {
+    display: grid;
+    gap: 10px;
+  }
+
+  .clock-header strong {
+    font-size: clamp(46px, 17vw, 68px);
+  }
+
+  .status-dot {
+    width: fit-content;
+  }
+
+  .work-live {
+    min-height: auto;
+    padding: 10px 12px;
+  }
+
+  .work-live strong {
+    font-size: 22px;
+  }
+
+  .clock-actions label {
+    gap: 6px;
+  }
+
+  .clock-panel .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .clock-btn {
+    width: 100%;
+    min-height: 56px;
+    font-size: 16px;
+  }
+
+  .clock-status {
+    padding: 9px 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fbfcfa;
+  }
+
+  .calendar-head {
+    padding: 12px;
+  }
+
+  .date-badge {
+    width: 58px;
+    min-width: 58px;
+    height: 58px;
+  }
+
+  .date-badge strong {
+    font-size: 28px;
+  }
+
+  .calendar-head h2 {
+    font-size: 18px;
+    margin-bottom: 2px;
+  }
+
+  .calendar-head p {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .calendar-tools {
+    display: grid;
+    grid-template-columns: 1fr 38px 1fr 38px;
+    gap: 8px;
+    padding: 10px 12px 6px;
+  }
+
+  .calendar-tools select,
+  .calendar-tools .btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .calendar-tools .btn {
+    grid-column: 1 / -1;
+    min-height: 38px;
+  }
+
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+
+  .calendar-grid {
+    gap: 2px;
+    padding: 0 8px 10px;
+  }
+
+  .calendar-weekday {
+    font-size: 11px;
+    padding: 6px 0;
+  }
+
+  .calendar-day {
+    min-height: 40px;
+    aspect-ratio: 1 / 1;
+    border-width: 1px;
+    border-radius: 7px;
+  }
+
+  .calendar-day span {
+    font-size: 15px;
+  }
+
+  .calendar-day small {
+    display: none;
+  }
+
+  .calendar-day.has-record::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--brand);
+  }
+
+  .attendance-list {
+    padding: 12px;
+  }
+
+  .attendance-toolbar {
+    align-items: stretch;
+  }
+
+  .attendance-toolbar > div {
+    width: 100%;
+  }
+
+  .attendance-toolbar h2 {
+    font-size: 18px;
+  }
+
+  .attendance-toolbar .btn {
+    width: 100%;
+  }
+
+  .table-wrap {
+    overflow: visible;
+  }
+
+  table:not(.attendance-table) {
+    min-width: 0;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  table:not(.attendance-table) thead {
+    display: none;
+  }
+
+  table:not(.attendance-table),
+  table:not(.attendance-table) tbody,
+  table:not(.attendance-table) tr,
+  table:not(.attendance-table) td {
+    display: block;
+    width: 100%;
+  }
+
+  table:not(.attendance-table) tr {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px;
+  }
+
+  table:not(.attendance-table) td {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: center;
+    border-bottom: 0;
+    padding: 7px 0;
+    text-align: right;
+  }
+
+  table:not(.attendance-table) td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  table:not(.attendance-table) td.actions {
+    justify-content: stretch;
+  }
+
+  table:not(.attendance-table) td.actions::before {
+    display: none;
+  }
+
+  table:not(.attendance-table) td.actions .btn {
+    flex: 1 1 0;
+    min-height: 38px;
+  }
+
+  .attendance-table {
+    min-width: 0;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  .attendance-table thead {
+    display: none;
+  }
+
+  .attendance-table,
+  .attendance-table tbody,
+  .attendance-table tr,
+  .attendance-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .attendance-table tr {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px;
+  }
+
+  .attendance-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: center;
+    border-bottom: 0;
+    padding: 7px 0;
+    text-align: right;
+  }
+
+  .attendance-table td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .attendance-table td:first-child {
+    padding-top: 0;
+  }
+
+  .attendance-table td:last-child {
+    padding-bottom: 0;
+  }
+
+  .attendance-table td.actions {
+    justify-content: stretch;
+  }
+
+  .attendance-table td.actions::before {
+    display: none;
+  }
+
+  .attendance-table td.actions .btn {
+    width: 100%;
+    min-height: 40px;
+  }
+
+  .time-range {
+    text-align: right;
+  }
+
+  .pill {
+    max-width: 180px;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 430px) {
+  .login-page {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .login-hero h1 {
+    font-size: 28px;
+    line-height: 1.02;
+  }
+
+  .login-hero p {
+    font-size: 13px;
+  }
+
+  .login-metrics {
+    display: none;
+  }
+
+  .login-box {
+    padding: 14px;
+  }
+
+  .login-box h2 {
+    font-size: 22px;
+  }
+
+  .login-submit {
+    min-height: 42px;
+  }
+
+  .sidebar {
+    padding: 8px;
+  }
+
+  .brand {
+    font-size: 16px;
+  }
+
+  .menu-toggle {
+    min-height: 32px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .nav {
+    margin-top: 8px;
+    gap: 6px;
+  }
+
+  .nav button {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .content {
+    padding: 8px 8px 72px;
+  }
+
+  .topbar {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .topbar h1 {
+    font-size: 19px;
+  }
+
+  .topbar span {
+    font-size: 12px;
+  }
+
+  .topbar .btn {
+    padding: 7px 9px;
+    font-size: 13px;
+  }
+
+  .attendance-page {
+    margin-bottom: 8px;
+  }
+
+  .attendance-top {
+    gap: 8px;
+  }
+
+  .clock-panel {
+    padding: 10px;
+    gap: 9px;
+  }
+
+  .clock-header {
+    gap: 6px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+  }
+
+  .clock-header strong {
+    font-size: clamp(40px, 14vw, 56px);
+  }
+
+  .clock-header small {
+    font-size: 11px;
+  }
+
+  .status-dot {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .clock-actions {
+    gap: 8px;
+  }
+
+  .clock-actions label {
+    font-size: 12px;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 8px 9px;
+    min-height: 36px;
+  }
+
+  .shift-grid {
+    gap: 8px;
+  }
+
+  .work-live {
+    padding: 8px 10px;
+  }
+
+  .work-live span {
+    font-size: 11px;
+  }
+
+  .work-live strong {
+    font-size: 18px;
+  }
+
+  .muted-card strong {
+    font-size: 13px;
+  }
+
+  .clock-btn {
+    min-height: 46px;
+    font-size: 14px;
+  }
+
+  .clock-status {
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+
+  .calendar-head {
+    padding: 9px 10px;
+    gap: 9px;
+  }
+
+  .date-badge {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+  }
+
+  .date-badge span {
+    font-size: 11px;
+  }
+
+  .date-badge strong {
+    font-size: 24px;
+  }
+
+  .calendar-head h2 {
+    font-size: 16px;
+  }
+
+  .calendar-head p {
+    display: none;
+  }
+
+  .calendar-tools {
+    grid-template-columns: 1fr 32px 1fr 32px;
+    gap: 6px;
+    padding: 8px 10px 5px;
+  }
+
+  .calendar-tools select,
+  .calendar-tools .btn {
+    min-height: 34px;
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+
+  .icon-btn {
+    width: 32px;
+    height: 34px;
+    font-size: 22px;
+  }
+
+  .calendar-grid {
+    gap: 2px;
+    padding: 0 6px 8px;
+  }
+
+  .calendar-weekday {
+    font-size: 10px;
+    padding: 4px 0;
+  }
+
+  .calendar-day {
+    min-height: 0;
+    height: 34px;
+    aspect-ratio: auto;
+    border-radius: 6px;
+    padding: 2px;
+  }
+
+  .calendar-day span {
+    font-size: 13px;
+  }
+
+  .calendar-day.has-record::after {
+    width: 4px;
+    height: 4px;
+  }
+
+  .attendance-list {
+    padding: 8px;
+  }
+
+  .attendance-toolbar {
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .attendance-toolbar h2 {
+    font-size: 16px;
+  }
+
+  .attendance-toolbar span {
+    font-size: 12px;
+  }
+
+  .attendance-toolbar .btn {
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .attendance-table {
+    border-spacing: 0 7px;
+  }
+
+  .form-grid {
+    gap: 8px;
+  }
+
+  .panel {
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+
+  .panel h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .toolbar {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .toolbar input {
+    max-width: none !important;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  textarea {
+    min-height: 58px;
+  }
+
+  .form-grid .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .form-grid .actions .btn {
+    width: 100%;
+    min-height: 38px;
+  }
+
+  table:not(.attendance-table) {
+    border-spacing: 0 7px;
+  }
+
+  table:not(.attendance-table) tr {
+    padding: 8px;
+  }
+
+  table:not(.attendance-table) td {
+    gap: 10px;
+    padding: 5px 0;
+    font-size: 13px;
+  }
+
+  table:not(.attendance-table) td::before {
+    font-size: 11px;
+  }
+
+  .attendance-table tr {
+    padding: 8px;
+  }
+
+  .attendance-table td {
+    gap: 10px;
+    padding: 5px 0;
+    font-size: 13px;
+  }
+
+  .attendance-table td::before {
+    font-size: 11px;
+  }
+
+  .attendance-table td.actions .btn {
+    min-height: 34px;
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+
+  .pill {
+    max-width: 150px;
+    padding: 3px 7px;
+    font-size: 11px;
+  }
+
+  .mobile-footer-nav {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    padding: 6px;
+  }
+
+  .mobile-footer-nav button {
+    min-height: 36px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .login-hero h1 {
+    font-size: 25px;
+  }
+
+  .login-kicker,
+  .login-hero p {
+    display: none;
+  }
+
+  .login-box {
+    padding: 12px;
+  }
+
+  .content {
+    padding: 6px 6px 68px;
+  }
+
+  .clock-header strong {
+    font-size: 38px;
+  }
+
+  .calendar-tools {
+    grid-template-columns: 1fr 30px 1fr 30px;
+  }
+
+  .icon-btn {
+    width: 30px;
+  }
+
+  .calendar-grid {
+    padding-inline: 4px;
+  }
+
+  .calendar-day {
+    height: 31px;
+  }
+
+  .calendar-day span {
+    font-size: 12px;
+  }
+
+  .attendance-table td {
+    font-size: 12px;
+  }
+
+  table:not(.attendance-table) td {
+    font-size: 12px;
+  }
+
+  .mobile-footer-nav {
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    gap: 4px;
+  }
+
+  .mobile-footer-nav button {
+    min-height: 34px;
+    font-size: 9.5px;
+  }
+}

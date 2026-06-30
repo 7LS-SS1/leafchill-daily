@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  color-scheme: light;
+}
+
+body {
+  @apply m-0 bg-[#f7f7f2] text-[#18201b] antialiased;
+}
+
+input,
+select,
+textarea {
+  @apply w-full rounded-md border border-stone-200 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/15;
+}
+
+button {
+  @apply transition;
+}

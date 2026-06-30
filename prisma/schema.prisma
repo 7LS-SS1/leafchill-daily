@@ -1,0 +1,192 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SYSTEM
+  OWNER
+  MANAGER
+  STAFF
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  RESIGNED
+}
+
+enum AttendanceStatus {
+  WORKING
+  NORMAL
+  LATE
+  VERY_LATE
+  NO_PAY
+  EARLY_LEAVE
+  ABSENT
+  LEAVE
+}
+
+model User {
+  id           String     @id @default(cuid())
+  username     String     @unique
+  passwordHash String     @map("password_hash")
+  role         Role       @default(STAFF)
+  employeeId   String?    @map("employee_id")
+  employee     Employee?  @relation(fields: [employeeId], references: [id], onDelete: SetNull)
+  active       Boolean    @default(true)
+  sessions     Session[]
+  auditLogs    AuditLog[]
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([token])
+  @@map("sessions")
+}
+
+model Employee {
+  id                String              @id @default(cuid())
+  firstName         String              @map("first_name")
+  lastName          String              @map("last_name")
+  gender            String?
+  age               Int?
+  address           String?
+  phone             String?
+  lineId            String?             @map("line_id")
+  position          String?
+  startDate         DateTime?           @map("start_date") @db.Date
+  status            EmployeeStatus      @default(ACTIVE)
+  users             User[]
+  attendanceRecords AttendanceRecord[]
+  leaveRecords      LeaveRecord[]
+  wageSettings      WageSetting[]
+  wageCalculations  WageCalculation[]
+  createdAt         DateTime            @default(now()) @map("created_at")
+  updatedAt         DateTime            @updatedAt @map("updated_at")
+
+  @@index([firstName, lastName])
+  @@map("employees")
+}
+
+model AttendanceRule {
+  id          String   @id @default(cuid())
+  label       String
+  fromTime    String   @map("from_time")
+  toTime      String?  @map("to_time")
+  deduction   Decimal  @default(0) @db.Decimal(10, 2)
+  noPay       Boolean  @default(false) @map("no_pay")
+  description String?
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("attendance_rules")
+}
+
+model LeaveType {
+  id           String        @id @default(cuid())
+  name         String        @unique
+  paid         Boolean       @default(false)
+  leaveRecords LeaveRecord[]
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+
+  @@map("leave_types")
+}
+
+model LeaveRecord {
+  id          String    @id @default(cuid())
+  employeeId  String    @map("employee_id")
+  employee    Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  leaveTypeId String    @map("leave_type_id")
+  leaveType   LeaveType @relation(fields: [leaveTypeId], references: [id])
+  date        DateTime  @db.Date
+  note        String?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@index([date, employeeId])
+  @@map("leave_records")
+}
+
+model WageSetting {
+  id         String   @id @default(cuid())
+  employeeId String   @map("employee_id")
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  dailyWage  Decimal  @default(0) @map("daily_wage") @db.Decimal(10, 2)
+  active     Boolean  @default(true)
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@index([employeeId, active])
+  @@map("wage_settings")
+}
+
+model AttendanceRecord {
+  id                String             @id @default(cuid())
+  employeeId        String             @map("employee_id")
+  employee          Employee           @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  date              DateTime           @db.Date
+  checkIn           String?            @map("check_in")
+  checkOut          String?            @map("check_out")
+  checkOutDate      DateTime?          @map("check_out_date") @db.Date
+  status            AttendanceStatus   @default(WORKING)
+  statusLabel       String             @default("ทำงาน") @map("status_label")
+  leaveTypeId       String?            @map("leave_type_id")
+  autoClosed        Boolean            @default(false) @map("auto_closed")
+  autoClosedAt      DateTime?          @map("auto_closed_at")
+  wageCalculation   WageCalculation?
+  createdAt         DateTime           @default(now()) @map("created_at")
+  updatedAt         DateTime           @updatedAt @map("updated_at")
+
+  @@unique([employeeId, date])
+  @@index([date])
+  @@map("attendance_records")
+}
+
+model WageCalculation {
+  id                 String           @id @default(cuid())
+  employeeId          String           @map("employee_id")
+  employee            Employee         @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  attendanceRecordId  String           @unique @map("attendance_record_id")
+  attendanceRecord    AttendanceRecord @relation(fields: [attendanceRecordId], references: [id], onDelete: Cascade)
+  date                DateTime         @db.Date
+  baseWage            Decimal          @default(0) @map("base_wage") @db.Decimal(10, 2)
+  deduction           Decimal          @default(0) @db.Decimal(10, 2)
+  netWage             Decimal          @default(0) @map("net_wage") @db.Decimal(10, 2)
+  statusLabel         String           @map("status_label")
+  note                String?
+  createdAt           DateTime         @default(now()) @map("created_at")
+  updatedAt           DateTime         @updatedAt @map("updated_at")
+
+  @@index([date, employeeId])
+  @@map("wage_calculations")
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  actorUserId String?  @map("actor_user_id")
+  actor       User?    @relation(fields: [actorUserId], references: [id], onDelete: SetNull)
+  action      String
+  entity      String
+  entityId    String?  @map("entity_id")
+  details     Json?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@map("audit_logs")
+}
