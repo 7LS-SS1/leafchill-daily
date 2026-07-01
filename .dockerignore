@@ -1,0 +1,17 @@
+.git
+.agents
+.codex
+.next
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+.env
+.env*.local
+data
+coverage
+dist
+out
+README.local.md

@@ -7,12 +7,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:prod": "prisma migrate deploy && next start -H 0.0.0.0 -p ${PORT:-3000}",
     "lint": "next lint",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:studio": "prisma studio",
-    "db:seed": "node prisma/seed.js",
+    "db:seed": "node prisma/seed-safe.js",
     "legacy:start": "node src/server.js",
     "legacy:dev": "node src/server.js",
     "legacy:seed": "node src/seed.js",
@@ -27,6 +28,7 @@
     "next": "^14.2.23",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "prisma": "^5.22.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
@@ -38,12 +40,11 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.23",
     "postcss": "^8.4.49",
-    "prisma": "^5.22.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2"
   },
   "prisma": {
-    "seed": "node prisma/seed.js"
+    "seed": "node prisma/seed-safe.js"
   },
   "engines": {
     "node": ">=18"
