@@ -70,3 +70,19 @@ docker run --env-file .env -p 3010:3000 leaf-chill-daily:coolify
 ```text
 http://localhost:3010/login
 ```
+
+## Login Cookie Note
+
+Production uses a secure session cookie when the request is HTTPS.
+
+If you test the Coolify deployment through plain `http://` and login returns to the login page, set this temporarily:
+
+```text
+COOKIE_SECURE=false
+```
+
+For the real public HTTPS domain, use:
+
+```text
+COOKIE_SECURE=true
+```

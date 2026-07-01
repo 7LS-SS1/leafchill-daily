@@ -10,14 +10,14 @@ const SESSION_DAYS = 7;
 
 export type AuthUser = Omit<User, "passwordHash">;
 
-export async function createSession(userId: string) {
+export async function createSession(userId: string, secureCookie = process.env.NODE_ENV === "production") {
   const token = randomBytes(32).toString("hex");
   const expiresAt = new Date(Date.now() + SESSION_DAYS * 24 * 60 * 60 * 1000);
   await prisma.session.create({ data: { token, userId, expiresAt } });
   cookies().set(SESSION_COOKIE, token, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: secureCookie,
     path: "/",
     expires: expiresAt
   });
